@@ -17,5 +17,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - name: Start Spring Boot app
+        run: |
+          mvn spring-boot:run &
+          sleep 20
       - name: Build and Run Tests
         run: mvn test
