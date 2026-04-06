@@ -5,6 +5,6 @@ Feature: Gestion du panier d'achat
 
   @Acceptance
   Scenario: Ajouter un article au panier
-    Given l'utilisateur est sur la page d'accueil
+    Given l'utilisateur est sur la page "index.html"
     When il clique sur le bouton "Ajouter au panier" du premier produit
     Then le compteur du panier doit afficher "1"

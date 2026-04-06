@@ -6,16 +6,21 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
+
 public class PanierSteps {
     WebDriver driver;
 
-    @Given("l'utilisateur est sur la page d'accueil")
-    public void userOnHomePage() {
+    @Given("l'utilisateur est sur la page {string}")
+    public void userOnHomePage(String fileName) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new"); // Requis pour GitHub Actions
+        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage"); // Requis pour GitHub Actions
         driver = new ChromeDriver(options);
-        driver.get("http://localhost:8080"); // URL de votre app
+        //driver.get("http://localhost:8080"); // URL de votre app
+        
+        File file = new File(fileName);
+        driver.get("file:///" + file.getAbsolutePath());
     }
 
     @When("il clique sur le bouton {string} du premier produit")
