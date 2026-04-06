@@ -19,6 +19,7 @@ public class PanierSteps {
         driver = new ChromeDriver(options);
         //driver.get("http://localhost:8080"); // URL de votre app
         
+        fileName = "src\\main\\resources\\static\\"+fileName;
         File file = new File(fileName);
         driver.get("file:///" + file.getAbsolutePath());
     }
